@@ -1,28 +1,40 @@
-    var gulp = require('gulp');
-   //var hint = require('gulp-jshint');
-    var concat= require('gulp-concat');
-    var uglify = require('gulp-uglify');
-    var connect = require('gulp-connect');
-//
-//    //create the tasks
-//
-//    //    gulp.task('Js-hint',function(){
-//    //         gulp.src(['app/app.js','app/*/*.js',])
-//    //             .pipe(hint())
-//    //             .pipe(hint.reporter('default'));
-//    //    });
-//
-    gulp.task('concatFiles', function(){
-         gulp.src(['app/app.js','app/*/*.js',])
-             .pipe(concat('build.js'))
-             .pipe(uglify())
-             .pipe(gulp.dest("./build/scripts/"));
+var gulp = require('gulp'),
+  connect = require('gulp-connect'),
+   jshint = require('gulp-jshint'),
+   concat = require("gulp-concat"),
+    rename = require('gulp-rename'),
+    uglify = require('gulp-uglify');
+    var srcFiles =["app/*/*.js"];
+ 
+gulp.task('connect', function() {
+  connect.server();
+});
 
-  });
+ 
+gulp.task('lint', function() {
+  return gulp.src(srcFiles)
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
 
-    gulp.task('web-server',function(){
-       connect.server({
-          port:8000
-       }) );
 
-   gulp.task('default',['concatFiles', 'web-server'], function(){});
+gulp.task('concat', function() {
+  return gulp.src(srcFiles)
+    .pipe(concat('all.js'))
+    .pipe(gulp.dest('./dist/'));
+});
+ 
+
+   
+
+gulp.task('uglify', function(){
+    return gulp.src(srcFiles)
+        .pipe(concat('concat.js'))
+        .pipe(gulp.dest('dist'))
+        .pipe(rename('uglify.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest('dist'));
+});
+
+ 
+gulp.task('default', ['connect']);

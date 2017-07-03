@@ -1,7 +1,7 @@
 (function () {
     'use strict'
     //module initilization
-    angular.module("vehicleApp", ["home","login", "register", "ui.router", "vehicles", "components", "header", "pascalprecht.translate"  ])
+    angular.module("vehicleApp", ["home","login", "register", "ui.router", "vehicles", "components", "header", "pascalprecht.translate"])
             .config(["$stateProvider","$locationProvider","$urlRouterProvider","$translateProvider", function ($stateProvider, $locationProvider, $urlRouterProvider, $translateProvider) {
           
             $locationProvider.html5Mode(true);
