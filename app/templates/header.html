@@ -1,0 +1,37 @@
+  <!-- Static navbar -->
+    <nav class="navbar navbar-default navbar-static-top" ng-controller="headerCtrl">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a ui-sref="home" ui-sref-active="activeState">{{'HOME'| translate}}</a></li>
+            <li><a ui-sref="vehicles" ui-sref-active="activeState">{{'Vehicles' | translate }}</a></li>  
+           
+             
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Select Language <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a ng-click="changeLagunage('en')" ui-sref-active="activeState">English</a></li>
+                  <li><a ng-click="changeLagunage('de')">Dutch</a></li>
+                  <li><a ng-click="changeLagunage('mr')">मराठी</a></li>
+               </ul>
+            </li>
+           
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref-active="activeState"> {{'CART' | translate }}  <span class="badge">{{vehicleCount}}</span></a></li>
+            <li><a ui-sref-active="activeState"> {{'TOTAL' | translate }} <span class="badge">{{total}}</span></a></li>
+            <li><a ui-sref="login" ui-sref-active="activeState">{{'LOGIN '| translate}}</a></li>
+            <li><a ui-sref="register" ui-sref-active="activeState">{{'REGISTER' | translate}}</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>

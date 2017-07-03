@@ -1,0 +1,94 @@
+<h4>Register  page</h4>
+<hr>
+<form name="register" novalidate>
+    <div class="form-horizontal">
+       
+        <div class="form-group">
+            <label for="inputName" class="control-label col-xs-2"> First Name </label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" paceholder="First Name" name="firstName" ng-model="userDetails.firstName" ng-required="true" ng-minlength= "5" ng-maxlength="10" >
+              <div ng-show="register.firstName.$dirty">
+                  <p ng-show= "register.firstName.$error.required">First name is required</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="inputName" class="control-label col-xs-2"> Last Name </label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" paceholder="First Name"
+                       name="lastName" ng-model="userDetails.lastName" ng-required="true"  ng-minlength= "5" ng-maxlength="10"> 
+                    <p ng-show= "register.lastName.$error.required">Last name is required</p>
+                    <p ng-show= "register.lastName.$error.minlength">Required minimum 5 character</p>
+                    <p ng-show= "register.lastName.$error.maxlength"> required maximum 10 character</p>
+            
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="inputName" class="control-label col-xs-2">User Name </label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" paceholder="First Name"
+                       name="userName" ng-model="userDetails.userName" ng-required="true"> </div>
+        </div>
+       
+        <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Date Of Birth</label>
+            <div class="col-xs-4">
+                <input type="text" class="form-control" placeholder="Date Of Birth" ng-model="userDetails.DoB" >
+            </div>
+        </div>
+
+       <!--   
+        <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">State</label>
+            <div class="col-xs-4">
+                <select class="form-control" 
+                        ng-model="selectState"
+                        ng-options=" state.value group by state.countryCode for state in states"        >
+                    <option value="">Please Select</option>
+                </select>
+            </div>
+        </div>
+
+    -->
+    
+
+        <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">Country</label>
+            <div class="col-xs-4">
+                <select class="form-control" name="country" ng-required="true" ng-change="loadStates()" ng-model="selectedCountry" ng-options="country.value for country in countries">
+                    <option value="">Please Select</option>
+                </select>
+                <p ng-show="register.country.$error.required">Please select Country</p>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="inputEmail" class="control-label col-xs-2">State</label>
+            <div class="col-xs-4">
+                <select class="form-control" ng-model="userDetails.selectedState" ng-       options="item.key for item in stateList">
+                    <option value="">Please Select</option>
+                </select>
+            </div>
+        </div>
+
+        
+      
+        <div class="form-group">
+            <div class=" col-xs-offset-2 col-xs-4">
+                <div class="checkbox">
+                    <lable>
+                        <input type="checkbox" ng-model="userDetails.terms">I agree terms and condition. </lable>
+                </div>
+            </div>
+        </div>
+          <div class="form-group">
+            <div class=" col-xs-offset-2 col-xs-4">
+                <button type="button" class="btn btn-primary" ng-click="registerUser()" ng-if="userDetails.firstName" ng-disabled="!userDetails.terms">Register</button>
+            </div>
+        </div>
+        
+    </div>
+</form>

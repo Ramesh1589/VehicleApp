@@ -1,0 +1,27 @@
+{
+  "name": "vehicleapp",
+  "homepage": "https://github.com/kolekaramol/VehicleApp",
+  "authors": [
+    "Ramesh Rathod <ramesh.rathod01@gmail.com>"
+  ],
+  "description": "This my project based on angular",
+  "main": "app.js",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.1",
+    "jquery": "^3.2.1",
+    "underscore":"*"
+  },
+  "devDependencies": {
+    "angular-translate": "^2.14.0"
+  }
+}

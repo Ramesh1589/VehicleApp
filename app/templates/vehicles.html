@@ -1,0 +1,40 @@
+<h1>{{'Vehicles' | translate }}</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3 col-md-3">
+            <input type="text" class="form-control" placeholder="Search By Model" ng-model="searchByModel"> </div>
+        <div class="col-sm-3 col-md-3">
+            <input type="text" class="form-control" placeholder="Search By Price" ng-model="searchByPrice"> </div>
+        <div class="col-sm-3 col-md-3">
+            <button class="btn btn-primary" ng-click="changeSort()">{{'SHOW' | translate }}</button>
+        </div>
+        <br/>
+        <hr>
+        <div class="col-sm-3 col-md-3">
+            <select ng-model="range" class="form-control" ng-options = "item.range for item in filterRange">
+                <option value="">Please Select </option>
+            </select>
+        </div>
+    </div>
+    <br/>
+    <div class="row">
+        <div class="col-sm-6 col-md-4" ng-repeat="vehicle in vehicles | orderBy:sortBy                                      
+            |rangeFilter:range">
+            <div class="thumbnail"> <img src="{{vehicle.picture}}" alt="vehicle image">
+                <div class="caption">
+                    <h3>{{vehicle.Model|uppercase}}</h3>
+                    <p>{{vehicle.Make|lowercase}}</p>
+                    <p><i class="fa fa-inr"></i>{{vehicle.Price|currency:""}}</p>
+                    
+                    <p>
+                        <a href="#" ng-click="selectVehicle(vehicle)" class="btn btn-primary" role="button" ng-if="!vehicle.isSelected">{{'SELECT' | translate}}</a> 
+                        
+                        <a href="#" ng-click="removeVehicle(vehicle)" class="btn btn-warning" role="button" ng-if="vehicle.isSelected">Remmove from cart</a>
+                    </p>
+                    
+                        <p> <a href="#" class="btn btn-primary" role="button">{{$index}}</a> </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
